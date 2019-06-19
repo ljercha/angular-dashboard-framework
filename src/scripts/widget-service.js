@@ -58,12 +58,11 @@ angular.module('adf')
         } else {
           var url = $sce.getTrustedResourceUrl(parseUrl(widget.templateUrl));
           $http.get(url)
-               .success(function(response) {
+               .then(function(response) {
                  // put response to cache, with unmodified url as key
                  $templateCache.put(widget.templateUrl, response);
                  deferred.resolve(response);
-               })
-               .error(function() {
+               }, function() {
                  deferred.reject('could not load template');
                });
         }
