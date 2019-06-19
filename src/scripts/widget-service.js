@@ -60,8 +60,8 @@ angular.module('adf')
           $http.get(url)
                .then(function(response) {
                  // put response to cache, with unmodified url as key
-                 $templateCache.put(widget.templateUrl, response);
-                 deferred.resolve(response);
+                 $templateCache.put(widget.templateUrl, response.data);
+                 deferred.resolve(response.data);
                }, function() {
                  deferred.reject('could not load template');
                });
